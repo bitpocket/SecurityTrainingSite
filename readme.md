@@ -18,3 +18,11 @@ ConnectionString = "Server = (localdb)\\mssqllocaldb;Database=SecurityTraining";
 ```
 SecurityTraining-CreateDataBase.sql
 ```
+
+# Deploy on server
+1. Install MSSQL Server 2012 if not exists.
+2. Install MS Management Studio
+3. Create database from script
+4. Deploy Solution
+5. Setup connection string
+6. Configure IIS
