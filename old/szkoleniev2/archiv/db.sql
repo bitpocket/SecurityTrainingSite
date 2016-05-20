@@ -1,0 +1,166 @@
+USE [master]
+GO
+/****** Object:  Database [Training_01]    Script Date: 09/19/2014 14:59:47 ******/
+CREATE DATABASE [Training_01] ON  PRIMARY 
+( NAME = N'Training', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL10_50.SQLEXPRESS\MSSQL\DATA\Training.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'Training_log', FILENAME = N'c:\Program Files\Microsoft SQL Server\MSSQL10_50.SQLEXPRESS\MSSQL\DATA\Training_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [Training_01] SET COMPATIBILITY_LEVEL = 100
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Training_01].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Training_01] SET ANSI_NULL_DEFAULT OFF
+GO
+ALTER DATABASE [Training_01] SET ANSI_NULLS OFF
+GO
+ALTER DATABASE [Training_01] SET ANSI_PADDING OFF
+GO
+ALTER DATABASE [Training_01] SET ANSI_WARNINGS OFF
+GO
+ALTER DATABASE [Training_01] SET ARITHABORT OFF
+GO
+ALTER DATABASE [Training_01] SET AUTO_CLOSE OFF
+GO
+ALTER DATABASE [Training_01] SET AUTO_CREATE_STATISTICS ON
+GO
+ALTER DATABASE [Training_01] SET AUTO_SHRINK OFF
+GO
+ALTER DATABASE [Training_01] SET AUTO_UPDATE_STATISTICS ON
+GO
+ALTER DATABASE [Training_01] SET CURSOR_CLOSE_ON_COMMIT OFF
+GO
+ALTER DATABASE [Training_01] SET CURSOR_DEFAULT  GLOBAL
+GO
+ALTER DATABASE [Training_01] SET CONCAT_NULL_YIELDS_NULL OFF
+GO
+ALTER DATABASE [Training_01] SET NUMERIC_ROUNDABORT OFF
+GO
+ALTER DATABASE [Training_01] SET QUOTED_IDENTIFIER OFF
+GO
+ALTER DATABASE [Training_01] SET RECURSIVE_TRIGGERS OFF
+GO
+ALTER DATABASE [Training_01] SET  DISABLE_BROKER
+GO
+ALTER DATABASE [Training_01] SET AUTO_UPDATE_STATISTICS_ASYNC OFF
+GO
+ALTER DATABASE [Training_01] SET DATE_CORRELATION_OPTIMIZATION OFF
+GO
+ALTER DATABASE [Training_01] SET TRUSTWORTHY OFF
+GO
+ALTER DATABASE [Training_01] SET ALLOW_SNAPSHOT_ISOLATION OFF
+GO
+ALTER DATABASE [Training_01] SET PARAMETERIZATION SIMPLE
+GO
+ALTER DATABASE [Training_01] SET READ_COMMITTED_SNAPSHOT OFF
+GO
+ALTER DATABASE [Training_01] SET HONOR_BROKER_PRIORITY OFF
+GO
+ALTER DATABASE [Training_01] SET  READ_WRITE
+GO
+ALTER DATABASE [Training_01] SET RECOVERY SIMPLE
+GO
+ALTER DATABASE [Training_01] SET  MULTI_USER
+GO
+ALTER DATABASE [Training_01] SET PAGE_VERIFY CHECKSUM
+GO
+ALTER DATABASE [Training_01] SET DB_CHAINING OFF
+GO
+USE [Training_01]
+GO
+/****** Object:  User [sectest_usr]    Script Date: 09/19/2014 14:59:47 ******/
+CREATE USER [sectest_usr] FOR LOGIN [sectest_login] WITH DEFAULT_SCHEMA=[dbo]
+GO
+/****** Object:  User [nt_user]    Script Date: 09/19/2014 14:59:47 ******/
+CREATE USER [nt_user] FOR LOGIN [NT AUTHORITY\SYSTEM] WITH DEFAULT_SCHEMA=[dbo]
+GO
+/****** Object:  User [builtin]    Script Date: 09/19/2014 14:59:47 ******/
+CREATE USER [builtin] FOR LOGIN [BUILTIN\Users]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 09/19/2014 14:59:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Users](
+	[id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[UserName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Tajne]    Script Date: 09/19/2014 14:59:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Tajne](
+	[key] [int] NULL,
+	[value] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Links]    Script Date: 09/19/2014 14:59:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Links](
+	[link] [varchar](200) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Comments]    Script Date: 09/19/2014 14:59:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Comments](
+	[id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[user_id] [int] FOREIGN KEY REFERENCES Users(id),
+	[comment] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[ChosenPets]    Script Date: 09/19/2014 14:59:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[ChosenPets](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[animal] [varchar](30) NOT NULL,
+	[name] [varchar](70) NOT NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT INTO [Training_01].[dbo].[Users]
+           ([UserName]
+           ,[Password])
+     VALUES
+           ('admin', 'admin1')
+GO
+INSERT INTO [Training_01].[dbo].[Users]
+           ([UserName]
+           ,[Password])
+     VALUES
+           ('innyuser','wyczesaneP@ssw0rd')
+GO
