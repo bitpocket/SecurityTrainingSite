@@ -1,0 +1,51 @@
+@using System.Threading.Tasks
+@using SecurityTrainingSite.ViewModels
+@model SecurityTrainingSite.ViewModels.AddPetViewModel
+
+@{
+	ViewData["Title"] = "Add1";
+	string confirmationOfAdd = ViewBag.ConfirmationOfAdd;
+}
+
+<h2>Add1</h2>
+
+<form asp-action="Create">
+	<div class="form-horizontal">
+		<h4>Pet</h4>
+		<hr />
+		<div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+		<div class="form-group">
+			<label asp-for="Animals" class="col-md-2 control-label"></label>
+			<div class="col-md-10">
+				@*<input asp-for="animal" class="form-control" />*@
+				<select asp-for="Animal" asp-items="@Model.Animals" class="form-control"></select>
+				<span asp-validation-for="Animal" class="text-danger" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label asp-for="Name" class="col-md-2 control-label"></label>
+			<div class="col-md-10">
+				<input asp-for="Name" class="form-control" />
+				<span asp-validation-for="Name" class="text-danger" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Add" class="btn btn-default"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				@confirmationOfAdd
+			</div>
+		</div>
+
+	</div>
+</form>
+
+@section Scripts {
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
