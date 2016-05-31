@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DataAccessLayer.Models;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Http.Authentication;
 using Microsoft.AspNet.Identity;
@@ -23,8 +22,7 @@ namespace SecurityTrainingSite.Controllers
 			ViewData["ReturnUrl"] = returnUrl;
 			return View();
 		}
-
-
+		
 		[HttpPost]
 		[AllowAnonymous]
 		public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
@@ -32,7 +30,7 @@ namespace SecurityTrainingSite.Controllers
 			ViewData["ReturnUrl"] = returnUrl;
 			if (ModelState.IsValid)
 			{
-				DataAccessLayer.User u = DataAccessLayer.SQLHelper.LogIn(model.UserName, model.Password);
+				User u = DataAccessLayer.Unsecure.LogIn(model.UserName, model.Password);
 				if (u.CredentialsCorrect)
 				{
 

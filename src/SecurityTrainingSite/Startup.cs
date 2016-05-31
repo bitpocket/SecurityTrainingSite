@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Authentication.Cookies;
+using SecurityTrainingSite.Models;
 
 namespace SecurityTrainingSite
 {
@@ -39,10 +40,10 @@ namespace SecurityTrainingSite
 		public void ConfigureServices(IServiceCollection services)
 		{
 			// Add framework services.
-			//services.AddEntityFramework()
-			//	.AddSqlServer()
-			//	.AddDbContext<ApplicationDbContext>(options =>
-			//		options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+			services.AddEntityFramework()
+				.AddSqlServer()
+				.AddDbContext<ApplicationDbContext>(options =>
+					options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
 			//services.AddIdentity<ApplicationUser, IdentityRole>();
 			//    .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -99,10 +100,12 @@ namespace SecurityTrainingSite
 
 			//app.UseIdentity();
 
+			//app.UseMvc();
+
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(
-					name: "default",
+					name: "index",
 					template: "{controller=Home}/{action=Index}/{id?}");
 			});
 		}

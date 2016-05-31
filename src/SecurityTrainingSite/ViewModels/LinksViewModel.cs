@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SecurityTrainingSite.ViewModels.Home
+namespace SecurityTrainingSite.ViewModels
 {
 	public class LinksViewModel
 	{
 		[Required]
 		[Display(Name = "Link")]
-		public string UserName { get; set; }
+		public string Link { get; set; }
 	}
 }

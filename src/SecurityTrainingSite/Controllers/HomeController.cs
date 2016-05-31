@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Authorization;
+﻿using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
+using SecurityTrainingSite.ViewModels;
 
 namespace SecurityTrainingSite.Controllers
 {
@@ -17,11 +14,28 @@ namespace SecurityTrainingSite.Controllers
 		}
 
 		[AllowAnonymous]
+		[Route("/Links")]
 		public IActionResult Links()
 		{
-			ViewData["Message"] = "Links page.";
-
+			ViewBag.Links = DataAccessLayer.Secure.GetLinks();
 			return View();
+		}
+
+		[HttpPost]
+		[AllowAnonymous]
+		[Route("/Links")]
+		public IActionResult Links(LinksViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				DataAccessLayer.Unsecure.InsertLink(model.Link);
+				ViewBag.Links = DataAccessLayer.Secure.GetLinks();
+				ModelState.Clear();
+				return View();
+			}
+
+			ViewBag.Links = DataAccessLayer.Secure.GetLinks();
+			return View(model);
 		}
 	}
 }

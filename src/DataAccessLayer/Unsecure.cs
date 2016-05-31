@@ -1,10 +1,12 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
+using DataAccessLayer.Models;
 
 namespace DataAccessLayer
 {
-	public class SQLHelper
+	public static class Unsecure
 	{
-		public static string ConnectionString { get; set; } = "Server = (localdb)\\mssqllocaldb;Database=SecurityTraining";
+		private static string ConnectionString { get; } = "Server = (localdb)\\mssqllocaldb;Database=SecurityTraining";
 
 		public static User LogIn(string userName, string password)
 		{
@@ -29,5 +31,15 @@ namespace DataAccessLayer
 			return user;
 		}
 
+		public static void InsertLink(string link)
+		{
+			using (SqlConnection conn = new SqlConnection(ConnectionString))
+			{
+				SqlCommand command = new SqlCommand($"insert into Links (link) values ('{link}')", conn);
+				conn.Open();
+
+				command.ExecuteNonQuery();
+			}
+		}
 	}
 }

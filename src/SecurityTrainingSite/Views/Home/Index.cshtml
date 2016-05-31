@@ -2,13 +2,15 @@
 	ViewData["Title"] = "Home Page";
 }
 
+<h2>@ViewData["Title"].</h2>
+
+
 <div class="row">
 	<div class="col-md-2">
 		<h2>Misc</h2>
 		<ul>
 			<li><a asp-controller="Home" asp-action="Links">Links</a></li>
 			<li><a asp-controller="Home" asp-action="Comments">Comments</a></li>
-			<li><a asp-controller="Home" asp-action="Validation">Validation</a></li>
 		</ul>
 	</div>
 	<div class="col-md-2">

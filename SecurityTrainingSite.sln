@@ -14,6 +14,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SecurityTrainingSite", "src
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataAccessLayer", "src\DataAccessLayer\DataAccessLayer.xproj", "{5A3652EC-FC09-4D5A-8D86-03F8A3356562}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "UnitTests", "src\UnitTests\UnitTests.xproj", "{507F5907-78A9-40DB-BEB5-6CA3789DE686}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,11 +30,17 @@ Global
 		{5A3652EC-FC09-4D5A-8D86-03F8A3356562}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A3652EC-FC09-4D5A-8D86-03F8A3356562}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A3652EC-FC09-4D5A-8D86-03F8A3356562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{507F5907-78A9-40DB-BEB5-6CA3789DE686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{507F5907-78A9-40DB-BEB5-6CA3789DE686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{507F5907-78A9-40DB-BEB5-6CA3789DE686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{507F5907-78A9-40DB-BEB5-6CA3789DE686}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DD4FE1BD-70D5-4CB8-A765-F876D59D50AD} = {B5AE9DC9-887F-41B2-9863-322663371CBE}
+		{5A3652EC-FC09-4D5A-8D86-03F8A3356562} = {B5AE9DC9-887F-41B2-9863-322663371CBE}
+		{507F5907-78A9-40DB-BEB5-6CA3789DE686} = {B5AE9DC9-887F-41B2-9863-322663371CBE}
 	EndGlobalSection
 EndGlobal
