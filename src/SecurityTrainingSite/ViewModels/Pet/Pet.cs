@@ -9,7 +9,6 @@ namespace SecurityTrainingSite.ViewModels
 		public string Kind { get; set; }
 
 		[Required]
-
 		[Display(Name = "Name")]
 		public string Name { get; set; }
 	}
