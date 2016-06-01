@@ -1,0 +1,41 @@
+﻿@using System.Threading.Tasks
+@using DataAccessLayer
+@using DataAccessLayer.Models
+@model SecurityTrainingSite.ViewModels.LinksViewModel
+
+@{
+	ViewData["Title"] = "Pet Counter 2";
+	Dictionary<string, int> petCounters = ViewBag.PetCounters;
+}
+
+<h2>@ViewData["Title"].</h2>
+<hr />
+
+<div class="container col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	<table class="table table-bordered table-striped ">
+
+		<thead>
+			<tr>
+				<th width="50%">Animal</th>
+				<th width="50%">Count</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@if (null != petCounters)
+			{
+				foreach (var petCounter in petCounters)
+				{
+					<tr>
+						<td>
+							@petCounter.Key
+						</td>
+						<td>
+							@petCounter.Value
+						</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</div>

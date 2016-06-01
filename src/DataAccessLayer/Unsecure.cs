@@ -57,9 +57,9 @@ namespace DataAccessLayer
 			return result;
 		}
 
-		public static IEnumerable<object> GetPets()
+		public static Dictionary<string, int> GetPetCounters()
 		{
-			List<object> result = new List<object>();
+			Dictionary<string, int> result = new Dictionary<string, int>();
 
 			using (SqlConnection conn = new SqlConnection(ConnectionString))
 			{
@@ -70,11 +70,7 @@ namespace DataAccessLayer
 
 				while (reader.Read())
 				{
-					result.Add(new
-					{
-						animal = (string) reader["UserName"],
-						count = (int) reader["count"]
-					});
+					result.Add((string) reader["Pet"], (int) reader["Count"]);
 				}
 			}
 

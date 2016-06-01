@@ -33,7 +33,7 @@ namespace SecurityTrainingSite.Controllers
 			if (ModelState.IsValid)
 			{
 				DataAccessLayer.Unsecure.AddPet(model.Animal, model.Name);
-				ViewBag.ConfirmationOfAdd = $"Pet was inserted {{animal: \"{model.Animal}\", name: \"{model.Name}\"}} ";
+				ViewBag.ConfirmationOfAdd = $"You've added \"{model.Animal}\" named \"{model.Name}\"";
 
 				ModelState.Clear();
 				model.Name = "";
@@ -43,6 +43,55 @@ namespace SecurityTrainingSite.Controllers
 			}
 
 			return View(model);
+		}
+
+		[AllowAnonymous]
+		[Route("/Add2")]
+		public IActionResult Add2()
+		{
+			var model = new AddPetViewModel()
+			{
+				Name = "",
+				Animals = new SelectList(_animals)
+			};
+
+			return View(model);
+		}
+
+		[AllowAnonymous]
+		[HttpPost]
+		[Route("/Add2")]
+		public IActionResult Add2(AddPetViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				DataAccessLayer.Unsecure.AddPet(model.Animal, model.Name);
+				ViewBag.ConfirmationOfAdd = $"You've added \"{model.Animal}\" named \"{model.Name}\"";
+
+				ModelState.Clear();
+				model.Name = "";
+				model.Animals = new SelectList(_animals);
+
+				return View(model);
+			}
+
+			return View(model);
+		}
+
+		[AllowAnonymous]
+		[Route("/Count1")]
+		public IActionResult Count1()
+		{
+			ViewBag.PetCounters = DataAccessLayer.Unsecure.GetPetCounters();
+			return View();
+		}
+
+		[AllowAnonymous]
+		[Route("/Count2")]
+		public IActionResult Count2()
+		{
+			ViewBag.PetCounters = DataAccessLayer.Unsecure.GetPetCounters();
+			return View();
 		}
 	}
 }
