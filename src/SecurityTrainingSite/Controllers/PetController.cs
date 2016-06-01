@@ -4,6 +4,7 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Authorization;
 using SecurityTrainingSite.ViewModels;
 using System.Collections.Generic;
+using SecurityTrainingSite.ViewModels.Pet;
 
 namespace SecurityTrainingSite.Controllers
 {

@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNet.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNet.Mvc.Rendering;
 
-namespace SecurityTrainingSite.ViewModels
+namespace SecurityTrainingSite.ViewModels.Pet
 {
 	public class AddPetViewModel
 	{

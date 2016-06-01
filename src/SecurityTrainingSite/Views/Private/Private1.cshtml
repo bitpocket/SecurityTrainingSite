@@ -1,0 +1,65 @@
+﻿@using System.Threading.Tasks
+@using DataAccessLayer
+@model SecurityTrainingSite.ViewModels.Private.AnimalNamesViewModel
+
+@{
+	ViewData["Title"] = "Animal names";
+	List<string> animalNames = ViewBag.AnimalNames;
+}
+
+<h2>@ViewData["Title"].</h2>
+<h4>Show names for an animal</h4>
+<div class="row">
+	<div class="col-md-8">
+		<section>
+			<form asp-controller="Private" asp-action="Private1" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+				<hr />
+				<div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="Animal" class="col-md-2 control-label"></label>
+					<div class="col-md-10">
+						<input asp-for="Animal" class="form-control" />
+						<span asp-validation-for="Animal" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<button type="submit" class="btn btn-default">Show</button>
+					</div>
+				</div>
+			</form>
+		</section>
+	</div>
+</div>
+
+
+@if (null != animalNames && animalNames.Count > 0)
+{
+	<hr/>
+	<div class="col-lg-4 col-md-4">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th width="50%">Animal's names</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var name in animalNames)
+				{
+					<tr>
+						<td>
+							@name
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+}
+
+
+
+
+@section Scripts {
+	@{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
