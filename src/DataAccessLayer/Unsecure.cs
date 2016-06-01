@@ -12,14 +12,12 @@ namespace DataAccessLayer
 		public static User LogIn(string userName, string password)
 		{
 			var user = new User();
-
 			using (SqlConnection conn = new SqlConnection(ConnectionString))
 			{
 				SqlCommand command = new SqlCommand($"SELECT id, UserName FROM Users WHERE UserName = '{userName}' AND Password = '{password}'", conn);
 				conn.Open();
 
 				SqlDataReader reader = command.ExecuteReader();
-
 				while (reader.Read())
 				{
 					user.CredentialsCorrect = true;
@@ -28,7 +26,6 @@ namespace DataAccessLayer
 					break;
 				}
 			}
-
 			return user;
 		}
 
@@ -38,7 +35,6 @@ namespace DataAccessLayer
 			{
 				SqlCommand command = new SqlCommand($"insert into Links (link) values ('{link}')", conn);
 				conn.Open();
-
 				command.ExecuteNonQuery();
 			}
 		}
@@ -53,14 +49,12 @@ namespace DataAccessLayer
 				conn.Open();
 				result = command.ExecuteNonQuery() > 0;
 			}
-
 			return result;
 		}
 
 		public static Dictionary<string, int> GetPetCounters()
 		{
 			Dictionary<string, int> result = new Dictionary<string, int>();
-
 			using (SqlConnection conn = new SqlConnection(ConnectionString))
 			{
 				SqlCommand command = new SqlCommand("select animal as Pet, count(*) as Count from ChosenPets group by animal", conn);
@@ -73,7 +67,6 @@ namespace DataAccessLayer
 					result.Add((string)reader["Pet"], (int)reader["Count"]);
 				}
 			}
-
 			return result;
 		}
 
@@ -99,20 +92,17 @@ namespace DataAccessLayer
 		public static IEnumerable<string> GetPetsNames(string animal)
 		{
 			var result = new List<string>();
-
 			using (var conn = new SqlConnection(ConnectionString))
 			{
 				var command = new SqlCommand($"select name from ChosenPets where animal = '{animal}'", conn);
 				conn.Open();
 
 				var reader = command.ExecuteReader();
-
 				while (reader.Read())
 				{
 					result.Add((string)reader["name"]);
 				}
 			}
-
 			return result;
 		}
 

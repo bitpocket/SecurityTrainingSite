@@ -4,13 +4,11 @@
 
 <h2>@ViewData["Title"].</h2>
 
-
 <div class="row">
 	<div class="col-md-2">
 		<h2>Misc</h2>
 		<ul>
 			<li><a asp-controller="Misc" asp-action="Links">Links</a></li>
-			<li><a asp-controller="Misc" asp-action="Comments">Comments</a></li>
 		</ul>
 	</div>
 	<div class="col-md-2">
@@ -41,10 +39,11 @@
 		</ul>
 	</div>
 	<div class="col-md-2">
-		<h2>CSRF</h2>
+		<h2>Comments</h2>
 		<ul>
-			<li><a asp-controller="CSRF" asp-action="CSRF1">CSRF1</a></li>
-			<li><a asp-controller="CSRF" asp-action="CSRF2">CSRF2</a></li>
+			<li><a asp-controller="Comments" asp-action="CSRF1">CSRF1</a></li>
+			<li><a asp-controller="Comments" asp-action="CSRF2">CSRF2</a></li>
+			<li><a asp-controller="Comments" asp-action="Comments">Show Comments</a></li>
 		</ul>
 	</div>
 </div>
