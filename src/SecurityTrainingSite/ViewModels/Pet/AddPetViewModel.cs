@@ -9,8 +9,6 @@ namespace SecurityTrainingSite.ViewModels
 		[Display(Name = "Animal")]
 		public string Animal { get; set; }
 
-		//[Required]
-		//[Display(Name = "Animal")]
 		public SelectList Animals { get; set; }
 
 		[Required]

@@ -33,15 +33,13 @@ namespace SecurityTrainingSite.Controllers
 			if (ModelState.IsValid)
 			{
 				DataAccessLayer.Unsecure.AddPet(model.Animal, model.Name);
-				ViewBag.ConfirmationOfAdd = $"pet inserted {{animal: \"{model.Animal}\", name: \"{model.Name}\"}} ";
+				ViewBag.ConfirmationOfAdd = $"Pet was inserted {{animal: \"{model.Animal}\", name: \"{model.Name}\"}} ";
 
-				var model2 = new AddPetViewModel()
-				{
-					Name = "",
-					Animals = new SelectList(_animals)
-				};
+				ModelState.Clear();
+				model.Name = "";
+				model.Animals = new SelectList(_animals);
 
-				return View(model2);
+				return View(model);
 			}
 
 			return View(model);
