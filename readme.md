@@ -1,6 +1,6 @@
 # Security Training Site
 
-# DB conection
+# DB connection
 
 - In SQL Management Studio connect to the SQL server at:
 ```
