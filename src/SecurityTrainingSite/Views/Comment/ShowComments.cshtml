@@ -1,0 +1,35 @@
+﻿@using System.Collections.Generic
+@model SecurityTrainingSite.Models.Misc.LinksViewModel
+
+@{
+	ViewData["Title"] = "Show user comments";
+	IEnumerable<string> comments = ViewBag.Comments;
+}
+
+<h2>@ViewData["Title"].</h2>
+<hr />
+
+<div class="container col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	<table class="table table-bordered table-striped ">
+
+		<thead>
+			<tr>
+				<th width="100%">Comments</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@if (null != comments)
+			{
+				foreach (var comment in comments)
+				{
+					<tr>
+						<td>
+							@comment
+						</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</div>

@@ -8,10 +8,10 @@
 ```
 If instance needed to be changed, please also ammend connection string at:
 ```
-\SecurityTrainingSite\src\DataAccessLayer\SQLHelper.cs
+\SecurityTrainingSite\src\SecurityTrainingSite\appsettings.json
 ```
 ```
-ConnectionString = "Server = (localdb)\\mssqllocaldb;Database=SecurityTraining";
+"DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=SecurityTraining"
 ```
 
 - open and run the script
