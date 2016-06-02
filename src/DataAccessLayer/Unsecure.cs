@@ -7,7 +7,7 @@ namespace DataAccessLayer
 {
 	public static class Unsecure
 	{
-		private static string ConnectionString { get; } = "Server = (localdb)\\mssqllocaldb;Database=SecurityTraining";
+		public static string ConnectionString { private get; set; }
 
 		public static User LogIn(string userName, string password)
 		{

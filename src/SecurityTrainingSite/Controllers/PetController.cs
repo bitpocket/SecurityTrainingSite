@@ -2,7 +2,6 @@ using System.Linq;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Authorization;
-using SecurityTrainingSite.ViewModels;
 using System.Collections.Generic;
 using SecurityTrainingSite.ViewModels.Pet;
 
@@ -93,6 +92,27 @@ namespace SecurityTrainingSite.Controllers
 		{
 			ViewBag.PetCounters = DataAccessLayer.Unsecure.GetPetCounters();
 			return View();
+		}
+
+		[Authorize]
+		[Route("/Private1")]
+		public IActionResult Private1()
+		{
+			return View();
+		}
+
+		[Authorize]
+		[HttpPost]
+		[Route("/Private1")]
+		public IActionResult Private1(AnimalNamesViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				ViewBag.AnimalNames = DataAccessLayer.Unsecure.GetPetsNames(model.Animal);
+
+			}
+
+			return View(model);
 		}
 	}
 }

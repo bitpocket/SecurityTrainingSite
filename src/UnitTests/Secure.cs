@@ -5,6 +5,11 @@ namespace UnitTests
 {
 	public class Secure
 	{
+		public Secure()
+		{
+			DataAccessLayer.Secure.ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=SecurityTraining";
+		}
+
 		[Theory]
 		[InlineData("admin", "admin1")]
 		public void ShouldPass(string login, string password)

@@ -5,6 +5,11 @@ namespace UnitTests
 {
 	public class Unsecure
 	{
+		public Unsecure()
+		{
+			DataAccessLayer.Unsecure.ConnectionString = "Server=(localdb)\\mssqllocaldb;Database=SecurityTraining";
+		}
+
 		[Theory]
 		[InlineData("admin", "admin1")]
 		[InlineData("admin", "x' or '1'='1")]
