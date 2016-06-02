@@ -1,6 +1,5 @@
 @using System.Threading.Tasks
-@using SecurityTrainingSite.ViewModels.Display
-@model SecurityTrainingSite.ViewModels.Display.DisplayViewModel
+@model SecurityTrainingSite.Models.Display.DisplayViewModel
 @{
 	ViewData["Title"] = "Display 2";
 	string message = ViewBag.message;
@@ -20,7 +19,7 @@
 <form asp-action="Display2" method="post">
 	<div class="form-horizontal">
 		<hr />
-		<div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 		<div class="form-group">
 			<label asp-for="Message" class="col-md-2 control-label"></label>
 			<div class="col-md-10">
@@ -39,7 +38,7 @@
 <form asp-action="Display2" method="post">
 	<div class="form-horizontal">
 		<hr />
-		<div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 		<div class="form-group">
 			<label asp-for="Message" class="col-md-2 control-label"></label>
 			<div class="col-md-10">

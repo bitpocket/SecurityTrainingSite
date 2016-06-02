@@ -1,7 +1,6 @@
 @using System.Threading.Tasks
-@using SecurityTrainingSite.ViewModels
-@using SecurityTrainingSite.ViewModels.Pet
-@model SecurityTrainingSite.ViewModels.Pet.AddPetViewModel
+@using SecurityTrainingSite.Models
+@model SecurityTrainingSite.Models.Pet.AddPetViewModel
 
 @{
 	ViewData["Title"] = "Add1";
@@ -10,10 +9,10 @@
 
 <h2>Add 1</h2>
 <h4>Choose your favourite pet:</h4>
-<form asp-action="Create">
+<form asp-action="Add1">
 	<div class="form-horizontal">
 		<hr />
-		<div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 		<div class="form-group">
 			<label asp-for="Animal" class="col-md-2 control-label"></label>
 			<div class="col-md-10">

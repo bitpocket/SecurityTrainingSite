@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SecurityTrainingSite.ViewModels.Account
+namespace SecurityTrainingSite.Models.Account
 {
 	public class LoginViewModel
 	{

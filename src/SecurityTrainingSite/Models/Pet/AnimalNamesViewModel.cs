@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SecurityTrainingSite.ViewModels.Pet
+namespace SecurityTrainingSite.Models.Pet
 {
 	public class AnimalNamesViewModel
 	{

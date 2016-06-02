@@ -1,9 +1,9 @@
 using System.Linq;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
-using SecurityTrainingSite.ViewModels.Pet;
+using SecurityTrainingSite.Models.Pet;
 
 namespace SecurityTrainingSite.Controllers
 {

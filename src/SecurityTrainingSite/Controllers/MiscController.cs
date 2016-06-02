@@ -1,11 +1,6 @@
-using System.Linq;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.AspNet.Authorization;
-using SecurityTrainingSite.ViewModels;
-using System.Collections.Generic;
-using SecurityTrainingSite.ViewModels.Misc;
-using SecurityTrainingSite.ViewModels.Pet;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using SecurityTrainingSite.Models.Misc;
 
 namespace SecurityTrainingSite.Controllers
 {

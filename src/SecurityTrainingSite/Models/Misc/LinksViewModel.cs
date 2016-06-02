@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SecurityTrainingSite.ViewModels.Misc
+namespace SecurityTrainingSite.Models.Misc
 {
 	public class LinksViewModel
 	{

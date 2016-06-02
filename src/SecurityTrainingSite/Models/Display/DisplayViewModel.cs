@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SecurityTrainingSite.ViewModels.Display
+namespace SecurityTrainingSite.Models.Display
 {
 	public class DisplayViewModel
 	{

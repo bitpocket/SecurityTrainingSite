@@ -2,14 +2,9 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using DataAccessLayer.Models;
-using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Http.Authentication;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.Data.Entity;
-using Microsoft.Extensions.Logging;
-using SecurityTrainingSite.ViewModels.Account;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SecurityTrainingSite.Models.Account;
 
 namespace SecurityTrainingSite.Controllers
 {

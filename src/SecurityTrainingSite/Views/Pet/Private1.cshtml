@@ -1,7 +1,6 @@
 ﻿@using System.Threading.Tasks
 @using DataAccessLayer
-@using SecurityTrainingSite.ViewModels.Pet
-@model SecurityTrainingSite.ViewModels.Pet.AnimalNamesViewModel
+@model SecurityTrainingSite.Models.Pet.AnimalNamesViewModel
 
 @{
 	ViewData["Title"] = "Animal names";
@@ -13,9 +12,9 @@
 <div class="row">
 	<div class="col-md-8">
 		<section>
-			<form asp-controller="Private" asp-action="Private1" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+			<form asp-controller="Pet" asp-action="Private1" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
 				<hr />
-				<div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+				<div asp-validation-summary="All" class="text-danger"></div>
 				<div class="form-group">
 					<label asp-for="Animal" class="col-md-2 control-label"></label>
 					<div class="col-md-10">

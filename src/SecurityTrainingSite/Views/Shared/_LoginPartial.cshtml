@@ -1,12 +1,16 @@
 ﻿@using System.Security.Claims
 @using System.Threading.Tasks
+@using Microsoft.AspNetCore.Identity
+@using SecurityTrainingSite.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
-@if (@User.Identity.IsAuthenticated)
+@if (@UserManager.GetUserName(User) != null)
 {
 	<form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-				<a asp-controller="Manage" asp-action="Index" title="Manage">Hello @User.GetUserName()!</a>
+				<a asp-controller="" asp-action="" title="Manage">Hello @UserManager.GetUserName(User)!</a>
 			</li>
 			<li>
 				<button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>

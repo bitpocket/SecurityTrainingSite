@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Http.Internal;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Data.Entity.Design.Internal;
-using SecurityTrainingSite.ViewModels;
-using SecurityTrainingSite.ViewModels.Display;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SecurityTrainingSite.Models.Display;
 
 namespace SecurityTrainingSite.Controllers
 {
