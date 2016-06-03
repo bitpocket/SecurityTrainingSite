@@ -20,8 +20,4 @@ SecurityTraining-CreateDataBase.sql
 ```
 
 # Deploy on Azure
-1. Create DataBase named 'securitytraining'
-2. Install MS Management Studio and connect to: securitytraining.database.windows.net
-3. Run a 'SecurityTraining-Create Tables-Azure.sql' script
-5. Deploy 'SecurityTrainingSite' Solution from GitHub
-5. Add connectionString under Azure Web App Configure as DefaultConnection=Server=tcp:securitytraining.database.windows.net,1433;Database=SecurityTraining;User ID=DogCatFrog@securitytraining;Password={your_password_here};Trusted_Connection=False;Encrypt=True;Connection Timeout=30;
+See /doc/How to deploy SecurityTrainingSite to azure.pdf
