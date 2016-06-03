@@ -1,4 +1,6 @@
 {
+	"title": "Security Training Site",
+  "version": "1.0.0-0",
 	"userSecretsId": "aspnet-SecurityTrainingSite-1919c520-11dd-4ade-8b57-00ed4c73d9ff",
 
 	"dependencies": {

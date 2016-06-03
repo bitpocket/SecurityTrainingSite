@@ -33,6 +33,7 @@ namespace SecurityTrainingSite.Controllers
 						{
 							new Claim(ClaimTypes.NameIdentifier, u.UserId.ToString()),
 							new Claim(ClaimTypes.Name, u.Username),
+							new Claim(ClaimTypes.Role, u.Role),
 						};
 
 					ClaimsPrincipal principal = new ClaimsPrincipal(new ClaimsIdentity(userClaims, "local"));

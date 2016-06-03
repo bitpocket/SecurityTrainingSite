@@ -14,7 +14,7 @@ namespace DataAccessLayer
 			var user = new User();
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand($"SELECT id, UserName FROM Users WHERE UserName = '{userName}' AND Password = '{password}'", conn);
+				var command = new SqlCommand($"SELECT id, UserName, Role FROM Users WHERE UserName = '{userName}' AND Password = '{password}'", conn);
 				conn.Open();
 
 				var reader = command.ExecuteReader();
@@ -23,6 +23,7 @@ namespace DataAccessLayer
 					user.CredentialsCorrect = true;
 					user.UserId = (int)reader["id"];
 					user.Username = (string)reader["UserName"];
+					user.Role = (string)reader["Role"];
 					break;
 				}
 			}

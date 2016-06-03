@@ -12,14 +12,14 @@ namespace DataAccessLayer
 		{
 			var user = new User();
 
-			using (SqlConnection conn = new SqlConnection(ConnectionString))
+			using (var conn = new SqlConnection(ConnectionString))
 			{
-				SqlCommand command = new SqlCommand("SELECT id, UserName FROM Users WHERE UserName = @userName AND Password = @password", conn);
+				var command = new SqlCommand("SELECT id, UserName FROM Users WHERE UserName = @userName AND Password = @password", conn);
 				command.Parameters.AddWithValue("@userName", userName);
 				command.Parameters.AddWithValue("@password", password);
 				conn.Open();
 
-				SqlDataReader reader = command.ExecuteReader();
+				var reader = command.ExecuteReader();
 
 				while (reader.Read())
 				{
@@ -35,14 +35,14 @@ namespace DataAccessLayer
 
 		public static List<Link> GetLinks()
 		{
-			List<Link> links = new List<Link>();
+			var links = new List<Link>();
 
-			using (SqlConnection conn = new SqlConnection(ConnectionString))
+			using (var conn = new SqlConnection(ConnectionString))
 			{
-				SqlCommand command = new SqlCommand("select link from Links", conn);
+				var command = new SqlCommand("select link from Links", conn);
 				conn.Open();
 
-				SqlDataReader reader = command.ExecuteReader();
+				var reader = command.ExecuteReader();
 
 				while (reader.Read())
 				{
@@ -53,6 +53,39 @@ namespace DataAccessLayer
 				}
 
 				return links;
+			}
+		}
+
+		public static int ClearLinks()
+		{
+			using (var conn = new SqlConnection(ConnectionString))
+			{
+				var command = new SqlCommand("delete from Links", conn);
+				conn.Open();
+
+				return command.ExecuteNonQuery();
+			}
+		}
+
+		public static int ClearComments()
+		{
+			using (var conn = new SqlConnection(ConnectionString))
+			{
+				var command = new SqlCommand("delete from Comments", conn);
+				conn.Open();
+
+				return command.ExecuteNonQuery();
+			}
+		}
+
+		public static int ClearPets()
+		{
+			using (var conn = new SqlConnection(ConnectionString))
+			{
+				var command = new SqlCommand("delete from ChosenPets", conn);
+				conn.Open();
+
+				return command.ExecuteNonQuery();
 			}
 		}
 	}

@@ -10,6 +10,10 @@
 		<h2>Misc</h2>
 		<ul>
 			<li><a asp-controller="Misc" asp-action="Links">Links</a></li>
+			@if (User.IsInRole("SuperAdmin"))
+			{
+				<li><a asp-controller="Misc" asp-action="Options">Options</a></li>
+			}
 		</ul>
 	</div>
 	<div class="col-md-2">

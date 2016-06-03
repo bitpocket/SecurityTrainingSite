@@ -1,0 +1,49 @@
+@using System.Threading.Tasks
+@{
+	ViewData["Title"] = "Options";
+}
+@{
+	string appVersion = ViewBag.AppVersion;
+}
+
+<h2>Options</h2>
+Version: @appVersion
+
+<form asp-action="Options" method="post">
+	<div class="form-horizontal">
+		<hr />
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" name="submit" value="Clear Links" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+</form>
+
+<form asp-action="Options" method="post">
+	<div class="form-horizontal">
+		<hr/>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" name="submit" value="Clear Pets" class="btn btn-default"/>
+			</div>
+		</div>
+	</div>
+</form>
+
+<form asp-action="Options" method="post">
+	<div class="form-horizontal">
+		<hr />
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" name="submit" value="Clear Comments" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+</form>
+
+@section Scripts {
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

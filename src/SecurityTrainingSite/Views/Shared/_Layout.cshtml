@@ -42,6 +42,10 @@
 						<li><a asp-controller="Comment" asp-action="ShowComments">Comments</a></li>
 						<li><a asp-controller="Comment" asp-action="CSRF1">CSRF1</a></li>
 						<li><a asp-controller="Comment" asp-action="CSRF2">CSRF2</a></li>
+						@if (User.IsInRole("SuperAdmin"))
+						{
+							<li><a asp-controller="Misc" asp-action="Options">Options</a></li>
+						}
 					</ul>
 					@await Html.PartialAsync("_LoginPartial")
 				</div>

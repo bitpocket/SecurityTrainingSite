@@ -88,6 +88,7 @@ SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Users](
 	[id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	[Role] [varchar](50) NOT NULL,
 	[UserName] [varchar](50) NOT NULL,
 	[Password] [varchar](50) NOT NULL
 ) ON [PRIMARY]
@@ -153,13 +154,22 @@ SET ANSI_PADDING OFF
 GO
 INSERT INTO [SecurityTraining].[dbo].[Users]
            ([UserName]
-           ,[Password])
+           ,[Password]
+		   ,[Role])
      VALUES
-           ('admin', 'admin1')
+           ('admin', 'admin1', 'Admin')
 GO
 INSERT INTO [SecurityTraining].[dbo].[Users]
            ([UserName]
-           ,[Password])
+           ,[Password]
+		   ,[Role])
      VALUES
-           ('innyuser','wyczesaneP@ssw0rd')
+           ('innyuser','wyczesaneP@ssw0rd', 'User')
+GO
+INSERT INTO [SecurityTraining].[dbo].[Users]
+           ([UserName]
+           ,[Password]
+		   ,[Role])
+     VALUES
+           ('superadmin','superadmin1', 'SuperAdmin')
 GO
