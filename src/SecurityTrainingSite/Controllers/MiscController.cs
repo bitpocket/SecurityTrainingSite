@@ -54,7 +54,8 @@ namespace SecurityTrainingSite.Controllers
 				DataAccessLayer.Secure.ClearComments();
 			}
 
-			ViewBag.AppVersion = typeof(Startup).Assembly.GetName().Version.ToString();
+			var v = typeof(Startup).Assembly.GetName().Version;
+			ViewBag.AppVersion = $"{v.Major}.{v.Minor}.{v.Build}";
 
 			return View();
 		}

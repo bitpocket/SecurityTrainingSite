@@ -1,5 +1,5 @@
-﻿{
-	"version": "1.0.0-*",
+{
+  "version": "1.0.0-*",
 	"dependencies": {
 		"System.Data.SqlClient": "4.1.0-rc2-24027"
 	},

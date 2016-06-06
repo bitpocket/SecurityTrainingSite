@@ -14,7 +14,8 @@ namespace DataAccessLayer
 			var user = new User();
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand($"SELECT id, UserName, Role FROM Users WHERE UserName = '{userName}' AND Password = '{password}'", conn);
+				string sql = $"SELECT id, UserName, Role FROM Users WHERE UserName = '{userName}' AND Password = '{password}'";
+				var command = new SqlCommand(sql, conn);
 				conn.Open();
 
 				var reader = command.ExecuteReader();
@@ -34,7 +35,8 @@ namespace DataAccessLayer
 		{
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand($"insert into Links (link) values ('{link}')", conn);
+				string sql = $"insert into Links (link) values ('{link}')";
+				var command = new SqlCommand(sql, conn);
 				conn.Open();
 				command.ExecuteNonQuery();
 			}
@@ -58,7 +60,8 @@ namespace DataAccessLayer
 			var result = new Dictionary<string, int>();
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand("select animal as Pet, count(*) as Count from ChosenPets group by animal", conn);
+				string sql = "select animal as Pet, count(*) as Count from ChosenPets group by animal";
+				var command = new SqlCommand(sql, conn);
 				conn.Open();
 
 				var reader = command.ExecuteReader();
@@ -76,7 +79,8 @@ namespace DataAccessLayer
 			var result = new List<string>();
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand($"select name from ChosenPets where animal = '{animal}'", conn);
+				string sql = $"select name from ChosenPets where animal = '{animal}'";
+				var command = new SqlCommand(sql, conn);
 				conn.Open();
 
 				var reader = command.ExecuteReader();
