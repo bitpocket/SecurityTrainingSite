@@ -1,9 +1,11 @@
+@using System.Collections.Generic
 @using System.Threading.Tasks
 @{
 	ViewData["Title"] = "Options";
 }
 @{
 	string appVersion = ViewBag.AppVersion;
+	List<string> traces = ViewBag.Traces;
 }
 
 <h2>Options</h2>
@@ -33,14 +35,26 @@ Version: @appVersion
 
 <form asp-action="Options" method="post">
 	<div class="form-horizontal">
-		<hr />
+		<hr/>
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
-				<input type="submit" name="submit" value="Clear Comments" class="btn btn-default" />
+				<input type="submit" name="submit" value="Clear Comments" class="btn btn-default"/>
 			</div>
 		</div>
 	</div>
 </form>
+
+<table>
+	@foreach (var s in traces)
+	{
+		<tr>
+			<td>
+				@s;
+			</td>
+		</tr>
+	}
+</table>
+
 
 @section Scripts {
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
