@@ -62,25 +62,6 @@ namespace DataAccessLayer
 			return result;
 		}
 
-		public static Dictionary<string, int> GetPetCounters()
-		{
-			var result = new Dictionary<string, int>();
-			using (var conn = new SqlConnection(ConnectionString))
-			{
-				string sql = "select animal as Pet, count(*) as Count from ChosenPets group by animal";
-				var command = new SqlCommand(sql, conn);
-				conn.Open();
-
-				var reader = command.ExecuteReader();
-
-				while (reader.Read())
-				{
-					result.Add((string)reader["Pet"], (int)reader["Count"]);
-				}
-			}
-			return result;
-		}
-
 		public static IEnumerable<string> GetPetsNames(string animal)
 		{
 			var result = new List<string>();

@@ -65,7 +65,7 @@ namespace SecurityTrainingSite.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				DataAccessLayer.Unsecure.AddPet(model.Animal, model.Name);
+				DataAccessLayer.Secure.AddPet(model.Animal, model.Name);
 				ViewBag.ConfirmationOfAdd = $"You've added \"{model.Animal}\" named \"{model.Name}\"";
 
 				ModelState.Clear();
@@ -82,7 +82,7 @@ namespace SecurityTrainingSite.Controllers
 		[Route("/Count1")]
 		public IActionResult Count1()
 		{
-			ViewBag.PetCounters = DataAccessLayer.Unsecure.GetPetCounters();
+			ViewBag.PetCounters = DataAccessLayer.Secure.GetPetCounters();
 			return View();
 		}
 
@@ -90,7 +90,7 @@ namespace SecurityTrainingSite.Controllers
 		[Route("/Count2")]
 		public IActionResult Count2()
 		{
-			ViewBag.PetCounters = DataAccessLayer.Unsecure.GetPetCounters();
+			ViewBag.PetCounters = DataAccessLayer.Secure.GetPetCounters();
 			return View();
 		}
 

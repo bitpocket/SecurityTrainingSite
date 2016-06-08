@@ -1,4 +1,3 @@
-@using System.Threading.Tasks
 @model SecurityTrainingSite.Models.Display.DisplayViewModel
 @{
 	ViewData["Title"] = "Display 1";
@@ -11,7 +10,7 @@
 
 <div class="form-group">
 	<div class="col-md-offset-2 col-md-10">
-		@message
+		@Html.Raw(message)
 		@messageFromQuery
 	</div>
 </div>

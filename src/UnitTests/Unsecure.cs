@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using DataAccessLayer.Models;
-//using Microsoft.AspNetCore.Mvc;
-//using SecurityTrainingSite.Controllers;
-//using SecurityTrainingSite.Models.Pet;
+﻿using DataAccessLayer.Models;
 using Xunit;
 
 namespace UnitTests
@@ -46,22 +41,5 @@ namespace UnitTests
 
 			Assert.Equal(true, u.CredentialsCorrect);
 		}
-
-		//[Fact]
-		//[InlineData("cat', ''); update users set password='fake' where username = 'admin' --", "x")]
-		//public void AddPetShouldChangePass2(string animal, string name)
-		//{
-		//	var controller = new PetController();
-		//	var model = new AddPetViewModel() {Animal = animal, Name = name};
-		//	var result = controller.Add1(model) as ViewResult;
-		//	//Assert.Equal("Hello", result.ViewData["Hello"]);
-
-		//	var u = DataAccessLayer.Unsecure.LogIn("admin", "fake");
-
-		//	// reset password
-		//	DataAccessLayer.Secure.ExecuteSql("update users set password='admin1' where username = 'admin'");
-
-		//	Assert.Equal(true, u.CredentialsCorrect);
-		//}
 	}
 }
