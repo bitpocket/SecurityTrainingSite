@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Models;
+﻿using System.Linq;
+using DataAccessLayer.Models;
 using Xunit;
 
 namespace UnitTests
@@ -40,6 +41,14 @@ namespace UnitTests
 			DataAccessLayer.Secure.ExecuteSql("update users set password='admin1' where username = 'admin'");
 
 			Assert.Equal(true, u.CredentialsCorrect);
+		}
+
+		[Theory]
+		[InlineData("Cat' union select Concat('user: ', UserName, ' pass: ', password) from Users--")]
+		public void SelectPetsNamesSelectUsersToo(string animal)
+		{
+			var result = DataAccessLayer.Unsecure.GetPetsNames(animal);
+			Assert.Equal(true, result.Any(s=> s.Contains("anotheruser")));
 		}
 	}
 }

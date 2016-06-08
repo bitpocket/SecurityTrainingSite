@@ -1,11 +1,8 @@
-@using System.Collections.Generic
-@using System.Threading.Tasks
 @{
 	ViewData["Title"] = "Options";
 }
 @{
 	string appVersion = ViewBag.AppVersion;
-	List<string> traces = ViewBag.Traces;
 }
 
 <h2>Options</h2>
@@ -43,18 +40,6 @@ Version: @appVersion
 		</div>
 	</div>
 </form>
-
-<table>
-	@foreach (var s in traces)
-	{
-		<tr>
-			<td>
-				@s;
-			</td>
-		</tr>
-	}
-</table>
-
 
 @section Scripts {
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>

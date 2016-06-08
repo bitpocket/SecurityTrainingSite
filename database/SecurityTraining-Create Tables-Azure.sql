@@ -27,8 +27,7 @@ CREATE TABLE [dbo].[ChosenPets](
 GO
 INSERT INTO [dbo].[Users]
            ([UserName]
-           ,[Password]
-		   ,[Role])
+           ,[Password])
      VALUES
            ('admin', 'admin1')
 GO

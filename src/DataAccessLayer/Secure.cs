@@ -33,6 +33,7 @@ namespace DataAccessLayer
 					user.CredentialsCorrect = true;
 					user.UserId = (int)reader["id"];
 					user.Username = (string)reader["UserName"];
+					user.Role = "User";
 					break;
 				}
 			}
