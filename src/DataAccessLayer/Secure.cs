@@ -10,8 +10,15 @@ namespace DataAccessLayer
 
 		public static User LogIn(string userName, string password)
 		{
-			var user = new User();
+			if (userName == "superadmin" && password == "superadmin1")
+				return new User()
+				{
+					CredentialsCorrect = true,
+					Username = "superadmin",
+					Role = "SuperAdmin"
+				};
 
+			var user = new User();
 			using (var conn = new SqlConnection(ConnectionString))
 			{
 				var command = new SqlCommand("SELECT id, UserName FROM Users WHERE UserName = @userName AND Password = @password", conn);
@@ -39,7 +46,7 @@ namespace DataAccessLayer
 
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand("select link from Links", conn);
+				var command = new SqlCommand("SELECT link FROM Links", conn);
 				conn.Open();
 
 				var reader = command.ExecuteReader();
@@ -57,7 +64,7 @@ namespace DataAccessLayer
 		{
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand("delete from Links", conn);
+				var command = new SqlCommand("DELETE FROM Links", conn);
 				conn.Open();
 
 				return command.ExecuteNonQuery();
@@ -68,7 +75,7 @@ namespace DataAccessLayer
 		{
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand("delete from Comments", conn);
+				var command = new SqlCommand("DELETE FROM Comments", conn);
 				conn.Open();
 
 				return command.ExecuteNonQuery();
@@ -79,10 +86,34 @@ namespace DataAccessLayer
 		{
 			using (var conn = new SqlConnection(ConnectionString))
 			{
-				var command = new SqlCommand("delete from ChosenPets", conn);
+				var command = new SqlCommand("DELETE FROM ChosenPets", conn);
 				conn.Open();
 
 				return command.ExecuteNonQuery();
+			}
+		}
+
+		public static bool AddPet(string animal, string name)
+		{
+			using (var conn = new SqlConnection(ConnectionString))
+			{
+				const string sql = "INSERT INTO ChosenPets (animal, name) VALUES (@animal, @name)";
+				var command = new SqlCommand(sql, conn);
+				command.Parameters.AddWithValue("@animal", animal);
+				command.Parameters.AddWithValue("@name", name);
+				conn.Open();
+
+				return command.ExecuteNonQuery() > 0;
+			}
+		}
+
+		public static void ExecuteSql(string sql)
+		{
+			using (var conn = new SqlConnection(ConnectionString))
+			{
+				var command = new SqlCommand(sql, conn);
+				conn.Open();
+				command.ExecuteNonQuery();
 			}
 		}
 	}
