@@ -13,7 +13,7 @@ namespace UnitTests
 		[Theory]
 		[InlineData("admin", "admin1")]
 		[InlineData("admin", "x' or '1'='1")]
-		[InlineData("x' or '1'='1", "x' or '1'='1")]
+		[InlineData("' or 1=1--", "password is not checked")]
 		public void ShouldPass(string login, string password)
 		{
 			User u = DataAccessLayer.Unsecure.LogIn(login, password);

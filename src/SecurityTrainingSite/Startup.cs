@@ -69,6 +69,9 @@ namespace SecurityTrainingSite
 
 			app.UseIdentity();
 
+			// allow showing error stact trace in development mode (exp on azure)
+			app.UseDeveloperExceptionPage();
+
 			app.UseCookieAuthentication(new CookieAuthenticationOptions()
 			{
 				AuthenticationScheme = "CookieAuth",
@@ -77,8 +80,6 @@ namespace SecurityTrainingSite
 				AutomaticAuthenticate = true,
 				AutomaticChallenge = true
 			});
-
-			// Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
 			app.UseMvc(routes =>
 			{

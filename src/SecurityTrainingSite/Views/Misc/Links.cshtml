@@ -3,7 +3,7 @@
 
 @{
 	ViewData["Title"] = "Links";
-	List<Link> links = ViewBag.Links;
+	List<string> links = ViewBag.Links;
 }
 
 <h2>@ViewData["Title"].</h2>
@@ -42,11 +42,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (Link link in links)
-				{
+			@foreach (string link in links)
+			{
+				var rawLink = Html.Raw(link.StartsWith(@"http://") ? link : @"http://" + link);
 				<tr>
 					<td>
-						<a href="@link.link">@link.link</a>
+						<a href="@rawLink">@link</a>
 					</td>
 				</tr>
 				}

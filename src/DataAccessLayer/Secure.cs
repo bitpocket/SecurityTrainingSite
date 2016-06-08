@@ -33,9 +33,9 @@ namespace DataAccessLayer
 			return user;
 		}
 
-		public static List<Link> GetLinks()
+		public static List<string> GetLinks()
 		{
-			var links = new List<Link>();
+			var links = new List<string>();
 
 			using (var conn = new SqlConnection(ConnectionString))
 			{
@@ -46,10 +46,7 @@ namespace DataAccessLayer
 
 				while (reader.Read())
 				{
-					links.Add(new Link()
-					{
-						link = (string)reader["link"]
-					});
+					links.Add((string)reader["link"]);
 				}
 
 				return links;
