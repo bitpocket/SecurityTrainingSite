@@ -27,17 +27,5 @@ namespace UnitTests
 			var u = DataAccessLayer.Secure.LogIn(login, password);
 			Assert.Equal(false, u.CredentialsCorrect);
 		}
-
-		[Theory]
-		[InlineData("cat', ''); update users set password='fake' where username = 'admin' --", "x")]
-		public void AddPetShouldNotChangePass(string animal, string name)
-		{
-			DataAccessLayer.Secure.AddPet(animal, name);
-			var u = DataAccessLayer.Secure.LogIn("admin", "fake");
-
-			Assert.Equal(false, u.CredentialsCorrect);
-		}
-
-
 	}
 }

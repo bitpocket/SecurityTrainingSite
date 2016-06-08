@@ -44,6 +44,16 @@ namespace UnitTests
 		}
 
 		[Theory]
+		[InlineData("cat', ''); update users set password='fake' where username = 'admin' --", "x")]
+		public void AddPetShouldNotChangePass(string animal, string name)
+		{
+			DataAccessLayer.Secure.AddPet(animal, name);
+			var u = DataAccessLayer.Secure.LogIn("admin", "fake");
+
+			Assert.Equal(false, u.CredentialsCorrect);
+		}
+
+		[Theory]
 		[InlineData("Cat' union select Concat('user: ', UserName, ' pass: ', password) from Users--")]
 		public void SelectPetsNamesSelectUsersToo(string animal)
 		{
